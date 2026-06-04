@@ -228,6 +228,9 @@ importers:
       sequelize:
         specifier: ^6.37.8
         version: 6.37.8(pg-hstore@2.3.4)(pg@8.21.0)
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       '@types/body-parser':
         specifier: ^1.19.6
@@ -991,6 +994,9 @@ packages:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
 
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
+
 snapshots:
 
   '@cspotcode/source-map-support@0.8.1':
@@ -1719,3 +1725,5 @@ snapshots:
   xtend@4.0.2: {}
 
   yn@3.1.1: {}
+
+  zod@4.4.3: {}
