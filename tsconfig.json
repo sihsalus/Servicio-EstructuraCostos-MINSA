@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "allowJs": true,                     // Allow to import model from js declaration
+      "target": "ES6",                     // Establece la versión de salida del código compilado
+      "module": "commonjs",                // Usa el sistema de módulos de Node.js
+      "strict": true,                      // Habilita las comprobaciones estrictas de TypeScript
+      "esModuleInterop": true,             // Permite importar módulos como ES6 en lugar de CommonJS
+      "skipLibCheck": true,                // Omite la comprobación de tipos en los archivos de las librerías
+      "outDir": "./dist",                  // El directorio de salida para los archivos compilados
+      "rootDir": "./src",                  // El directorio raíz para los archivos de código fuente
+      "resolveJsonModule": true,           // Permite importar archivos JSON como módulos
+      "sourceMap": true,                   // Genera archivos de mapa de origen para depuración
+    },
+    "include": ["src/**/*"],             // Incluir todos los archivos bajo src (ts, js, json, assets)
+    "exclude": ["node_modules", "dist"]     // Archivos y directorios a excluir
+  }
+  

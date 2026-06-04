@@ -1,0 +1,38 @@
+# Dependencias
+node_modules
+/node_modules
+
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Compilados de TypeScript y ejecución
+dist
+/dist
+out-tsc
+*.tsbuildinfo
+
+# Archivos de la base de datos (si usas SQLite local para pruebas)
+*.sqlite
+*.sqlite-journal
+
+# Carpetas de desarrollo y herramientas
+.DS_Store
+.vscode
+.idea
+*.log
+
+# Archivos temporales de pruebas y cobertura
+coverage
+.nyc_output
+
+# Si usas Sequelize CLI, a veces se generan archivos de configuración locales
+# o se ignora la carpeta de configuraciones si contiene credenciales hardcodeadas
+config/config.json
