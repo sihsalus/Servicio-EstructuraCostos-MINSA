@@ -10,6 +10,10 @@
       "rootDir": "./src",                  // El directorio raíz para los archivos de código fuente
       "resolveJsonModule": true,           // Permite importar archivos JSON como módulos
       "sourceMap": true,                   // Genera archivos de mapa de origen para depuración
+      "baseUrl": "./",
+      "paths": {
+        "@/*": ["src/*"]
+      }
     },
     "include": ["src/**/*"],             // Incluir todos los archivos bajo src (ts, js, json, assets)
     "exclude": ["node_modules", "dist"]     // Archivos y directorios a excluir

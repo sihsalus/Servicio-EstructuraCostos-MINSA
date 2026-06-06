@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import EntityModel from "./EntityModel";
-import CostStructureConst from "../const/CostStructureConst";
+import EntityModel from "../EntityModel";
+import CostStructureConst from "../../const/CostStructureConst";
 
 class InfrastructureValueHistoryModel extends EntityModel { 
     private infrastructureId! :number;

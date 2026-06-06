@@ -1,7 +1,7 @@
 // models/EquipmentPriceHistoryModel.ts
 import { DataTypes } from "sequelize";
-import EntityModel from "./EntityModel";
-import CostStructureConst from "../const/CostStructureConst";
+import EntityModel from "../EntityModel";
+import CostStructureConst from "../../const/CostStructureConst";
 
 class EquipmentPriceHistoryModel extends EntityModel {
     private equipmentId!: number;

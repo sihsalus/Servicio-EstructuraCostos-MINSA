@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import EntityModel from "./EntityModel";
+import EntityModel from "../EntityModel";
 
 class InfrastructureModel extends EntityModel {
     private code!: string;
