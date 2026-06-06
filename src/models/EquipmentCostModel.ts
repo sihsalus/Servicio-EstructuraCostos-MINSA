@@ -1,12 +1,13 @@
 // models/EquipmentCostModel.ts
 import { DataTypes } from "sequelize";
 import EntityModel from "./EntityModel";
+import CostStructureConst from "../const/CostStructureConst";
 
 class EquipmentCostModel extends EntityModel {
-    private equipment_id!: number;
-    private price_history_id!: number; 
-    private time_minutes!: number;
-    private deprecation_per_minute!: number; 
+    private equipmentId!: number;
+    private priceHistoryId!: number; //verificar 
+    private timeMinutes!: number;
+    private deprecationPerMinute!: number; 
 
 
     static attributesModel() {
@@ -15,12 +16,12 @@ class EquipmentCostModel extends EntityModel {
             equipment_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: 'equipment', key: 'id' }
+                references: { model: CostStructureConst.EQUIPMENT_BD_TABLE, key: 'id' }
             },
             price_history_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: 'equipment_price_history', key: 'id' }
+                references: { model: CostStructureConst.EQUIPMENT_PRICE_HISTORY_BD_TABLE, key: 'id' }
             },
             time_minutes: { type: DataTypes.INTEGER, allowNull: false },
             deprecation_per_minute: { type: DataTypes.DECIMAL(18, 6), allowNull: false }
@@ -28,35 +29,35 @@ class EquipmentCostModel extends EntityModel {
     }
 
     public getEquipmentId(): number {
-        return this.equipment_id;
+        return this.equipmentId;
     }
 
-    public setEquipmentId(equipment_id: number): void {
-        this.equipment_id = equipment_id;
+    public setEquipmentId(equipmentId: number): void {
+        this.equipmentId = equipmentId;
     }
 
     public getPriceHistoryId(): number {
-        return this.price_history_id;
-    }
+        return this.priceHistoryId;
+    }       
 
-    public setPriceHistoryId(price_history_id: number): void {
-        this.price_history_id = price_history_id;
+    public setPriceHistoryId(priceHistoryId: number): void {
+        this.priceHistoryId = priceHistoryId;
     }
 
     public getTimeMinutes(): number {
-        return this.time_minutes;
+        return this.timeMinutes;
     }
 
-    public setTimeMinutes(time_minutes: number): void {
-        this.time_minutes = time_minutes;
+    public setTimeMinutes(timeMinutes: number): void {
+        this.timeMinutes = timeMinutes;
     }
-    
+
     public getDeprecationPerMinute(): number {
-        return this.deprecation_per_minute;
+        return this.deprecationPerMinute;
     }
 
-    public setDeprecationPerMinute(deprecation_per_minute: number): void {
-        this.deprecation_per_minute = deprecation_per_minute;
+    public setDeprecationPerMinute(deprecationPerMinute: number): void {
+        this.deprecationPerMinute = deprecationPerMinute;
     }
 }
 

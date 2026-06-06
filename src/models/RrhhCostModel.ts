@@ -1,9 +1,10 @@
 import { DataTypes } from "sequelize";
 import EntityModel from "./EntityModel";
+import CostStructureConst from "../const/CostStructureConst";
 
 class RrhhCostModel extends EntityModel{
     private quantity!: number;
-    private time_minutes!: number;
+    private timeMinutes!: number;
     private costPerMinute!: number;
     private annualSalary!: number;
     
@@ -18,7 +19,7 @@ class RrhhCostModel extends EntityModel{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'human_resources',
+                    model: CostStructureConst.HUMAN_RESOURCE_BD_TABLE,
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',
@@ -34,13 +35,12 @@ class RrhhCostModel extends EntityModel{
     public setQuantity(quantity: number): void {
         this.quantity = quantity;
     }              
-
     public getTimeMinutes(): number {
-        return this.time_minutes;
+        return this.timeMinutes;
     }
 
-    public setTimeMinutes(time_minutes: number): void {
-        this.time_minutes = time_minutes;
+    public setTimeMinutes(timeMinutes: number): void {
+        this.timeMinutes = timeMinutes;
     }
     
     public getCostPerMinute(): number {

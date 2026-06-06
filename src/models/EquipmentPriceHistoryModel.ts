@@ -1,10 +1,13 @@
+// models/EquipmentPriceHistoryModel.ts
 import { DataTypes } from "sequelize";
 import EntityModel from "./EntityModel";
+import CostStructureConst from "../const/CostStructureConst";
 
 class EquipmentPriceHistoryModel extends EntityModel {
-    private equipment_id!: number;
-    private price_market!: number; 
-    private fiscal_year!: number;  //para el precio de mercado de referencia, por el año
+    private equipmentId!: number;
+    private priceMarket!: number;
+    private startDate!: Date;    // Fecha desde que entra en vigencia el precio
+    private endDate?: Date; // Fecha en que cambia (null si es el actual)
 
     static attributesModel() {
         return {
@@ -12,39 +15,45 @@ class EquipmentPriceHistoryModel extends EntityModel {
             equipment_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: 'equipment', key: 'id' }
+                references: { model: CostStructureConst.EQUIPMENT_BD_TABLE, key: 'id' }
             },
             price_market: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
-            fiscal_year: { type: DataTypes.INTEGER, allowNull: false }
+            start_date: { type: DataTypes.DATEONLY, allowNull: false, defaultValue: DataTypes.NOW },
+            end_date: { type: DataTypes.DATEONLY, allowNull: true }
         };
     }
 
     public getEquipmentId(): number {
-        return this.equipment_id;
+        return this.equipmentId;
     }
 
-    public setEquipmentId(equipment_id: number): void {
-        this.equipment_id = equipment_id;
+    public setEquipmentId(equipmentId: number): void {
+        this.equipmentId = equipmentId;
     }
 
     public getPriceMarket(): number {
-        return this.price_market;
+        return this.priceMarket;
     }
 
-    public setPriceMarket(price_market: number): void {
-        this.price_market = price_market;
+    public setPriceMarket(priceMarket: number): void {
+        this.priceMarket = priceMarket;
     }
 
-    public getFiscalYear(): number {
-        return this.fiscal_year;
+    public getStartDate(): Date {
+        return this.startDate;
     }
 
-    public setFiscalYear(fiscal_year: number): void {
-        this.fiscal_year = fiscal_year;
-    }           
+    public setStartDate(startDate: Date): void {
+        this.startDate = startDate;
+    }
 
+    public getEndDate(): Date | undefined {
+        return this.endDate;
+    }
 
-
+    public setEndDate(endDate: Date): void {
+        this.endDate = endDate;
+    }
 }
 
 export default EquipmentPriceHistoryModel;
