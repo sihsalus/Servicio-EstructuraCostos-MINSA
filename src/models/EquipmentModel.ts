@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import CostStructureConst, { TEquipmentEnum } from "../const/CostStructureConst";
+import { TEquipmentEnum } from "../const/CostStructureConst";
 
 class EquipmentModel extends Model {
     private name!: string;

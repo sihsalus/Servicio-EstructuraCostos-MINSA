@@ -19,6 +19,9 @@ class CostStructureConst {
     public static readonly HUMAN_RESOURCE_BD_TABLE = "human_resources";
     public static readonly HUMAN_RESOURCE_COST_BD_TABLE = "human_resource_costs";
     public static readonly FISCAL_YEAR_BD_TABLE = "fiscal_years";
+    public static readonly INFRASTRUCTURE_BD_TABLE = "infrastructure";
+    public static readonly INFRASTRUCTURE_COST_BD_TABLE = "infrastructure_costs";
+    public static readonly INFRASTRUCTURE_PRICE_HISTORY_BD_TABLE = "infrastructure_price_history";
 
 }
 export default CostStructureConst;
