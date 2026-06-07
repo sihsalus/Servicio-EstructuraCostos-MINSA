@@ -59,3 +59,5 @@ class RrhhCostModel extends EntityModel{
     }
 
 }
+
+export default RrhhCostModel;

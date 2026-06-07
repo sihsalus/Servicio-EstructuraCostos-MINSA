@@ -7,7 +7,7 @@ class ActivityModel extends EntityModel{
     private medicalProcedureId!: number;
     private name!: string;
     private stepOrder!: number;
-    
+
     static attributesModel() {
         return {
             ...EntityModel.attributesModel(),
@@ -19,8 +19,32 @@ class ActivityModel extends EntityModel{
             }
              ,
             name: { type: DataTypes.STRING, allowNull: false },
-            step_order: { type: DataTypes.INTEGER, allowNull: false }
+            step_order: { type: DataTypes.INTEGER, allowNull: false },
         };
+    }
+
+    public getMedicalProcedureId(): number {
+        return this.medicalProcedureId;
+    }
+
+    public setMedicalProcedureId(medicalProcedureId: number): void {
+        this.medicalProcedureId = medicalProcedureId;
+    }
+
+    public getName(): string {
+        return this.name;
+    }
+
+    public setName(name: string): void {
+        this.name = name;
+    }
+
+    public getStepOrder(): number {
+        return this.stepOrder;
+    }
+
+    public setStepOrder(stepOrder: number): void {
+        this.stepOrder = stepOrder;
     }
 
 }
