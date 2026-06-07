@@ -35,6 +35,7 @@ class CostStructureConst {
     public static readonly COST_STRUCTURE_BD_TABLE = "cost_structure";
     public static readonly MEDICAL_PROCEDURE_BD_TABLE = "medical_procedure";
     public static readonly ACTIVITY_BD_TABLE = "activity";
+    public static readonly ACTIVITY_COST_EXECUTION_BD_TABLE = "activity_cost_execution";
 
 }
 export default CostStructureConst;

@@ -15,7 +15,7 @@ class EntityModel extends Model {
     static attributesModel() {
         return{
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-            uuid: { type: DataTypes.UUID, defaultValue: DataTypes.UUID, allowNull: false },
+            uuid: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, allowNull: false },
             createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
             createdBy: { type: DataTypes.STRING, allowNull: false },
             active: { type: DataTypes.BOOLEAN, defaultValue: true, allowNull: false },

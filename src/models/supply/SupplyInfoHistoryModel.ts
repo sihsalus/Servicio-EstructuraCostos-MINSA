@@ -25,8 +25,8 @@ class SupplyInfoHistoryModel extends EntityModel {
             acquisition_price: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
             conversion_equivalent: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
             unit_consumption_cost: { type: DataTypes.DECIMAL(18, 6), allowNull: false },
-            start_date: { type: DataTypes.DATE, allowNull: false },
-            end_date: { type: DataTypes.DATE, allowNull: true }
+            start_date: { type: DataTypes.DATEONLY, allowNull: false, defaultValue: DataTypes.NOW },
+            end_date: { type: DataTypes.DATEONLY, allowNull: true }
         };
     }
 

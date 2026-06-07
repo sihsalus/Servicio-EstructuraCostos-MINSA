@@ -8,6 +8,7 @@ class InfrastructureCostModel extends EntityModel {
     private priceHistoryId!: number; //verificar 
     private timeMinutes!: number;
     private totalStandarCost!: number;
+    private costStructureId!: number;
 
     static attributesModel() {
         return {
@@ -24,6 +25,16 @@ class InfrastructureCostModel extends EntityModel {
                     key: 'id'
                 }
              },
+            cost_structure_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: CostStructureConst.COST_STRUCTURE_BD_TABLE, 
+                    key: 'id'
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE'
+            },
             time_minutes: { type: DataTypes.INTEGER, allowNull: false },
             total_standar_cost: { type: DataTypes.DECIMAL(18, 6), allowNull: false }
         };

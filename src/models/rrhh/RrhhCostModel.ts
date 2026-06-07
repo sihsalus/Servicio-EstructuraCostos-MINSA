@@ -7,6 +7,7 @@ class RrhhCostModel extends EntityModel{
     private timeMinutes!: number;
     private costPerMinute!: number;
     private annualSalary!: number;
+    private activityCostExecutionId!: number;
     
     static attributesModel(){
         return {
@@ -20,6 +21,16 @@ class RrhhCostModel extends EntityModel{
                 allowNull: false,
                 references: {
                     model: CostStructureConst.HUMAN_RESOURCE_BD_TABLE,
+                    key: 'id'
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE'
+            },
+            activity_cost_execution_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: CostStructureConst.ACTIVITY_COST_EXECUTION_BD_TABLE,
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',

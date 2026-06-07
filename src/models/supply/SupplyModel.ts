@@ -6,7 +6,7 @@ import { DataTypes } from "sequelize";
 class SupplyModel extends EntityModel {
     private sigaCode!: string;
     private name!: string;
-    private typeSupplyId!: TypeSupplyEnum;
+    private type!: TypeSupplyEnum;
     private consumptionUnit!: string;
 
     static attributesModel() {
@@ -35,12 +35,12 @@ class SupplyModel extends EntityModel {
         this.name = name;
     }
 
-    public getTypeSupplyId(): TypeSupplyEnum {
-        return this.typeSupplyId;
+    public getType(): TypeSupplyEnum {
+        return this.type
     }
 
-    public setTypeSupplyId(typeSupplyId: TypeSupplyEnum): void {
-        this.typeSupplyId = typeSupplyId;
+    public setType(type: TypeSupplyEnum): void {
+        this.type = type;
     }
 
     public getConsumptionUnit(): string {

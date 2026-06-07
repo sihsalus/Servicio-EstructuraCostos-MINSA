@@ -1,7 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import { TEquipmentEnum } from "@/const/CostStructureConst";
+import EntityModel from "@/models/EntityModel";
 
-class EquipmentModel extends Model {
+class EquipmentModel extends EntityModel {
     private name!: string;
     private description?: string;
     private typeEquipment!: TEquipmentEnum;
@@ -11,6 +12,7 @@ class EquipmentModel extends Model {
 
     static attributesModel() {
         return {
+            ...EntityModel.attributesModel(),
             name: { type: DataTypes.STRING, allowNull: false },
             description: { type: DataTypes.STRING, allowNull: true },
             type_equipment: { type: DataTypes.ENUM, values: Object.values(TEquipmentEnum), allowNull: false },

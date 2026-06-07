@@ -8,6 +8,8 @@ class EquipmentCostModel extends EntityModel {
     private priceHistoryId!: number; //verificar 
     private timeMinutes!: number;
     private deprecationPerMinute!: number; 
+    private quantity!: number;
+    private activityCostExecutionId!: number; 
 
 
     static attributesModel() {
@@ -24,7 +26,15 @@ class EquipmentCostModel extends EntityModel {
                 references: { model: CostStructureConst.EQUIPMENT_PRICE_HISTORY_BD_TABLE, key: 'id' }
             },
             time_minutes: { type: DataTypes.INTEGER, allowNull: false },
-            deprecation_per_minute: { type: DataTypes.DECIMAL(18, 6), allowNull: false }
+            deprecation_per_minute: { type: DataTypes.DECIMAL(18, 6), allowNull: false },
+            quantity: { type: DataTypes.INTEGER, allowNull: false },
+            activity_cost_execution_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: { model: CostStructureConst.ACTIVITY_COST_EXECUTION_BD_TABLE, key: 'id' },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE'
+            }
         };
     }
 
@@ -58,6 +68,22 @@ class EquipmentCostModel extends EntityModel {
 
     public setDeprecationPerMinute(deprecationPerMinute: number): void {
         this.deprecationPerMinute = deprecationPerMinute;
+    }
+
+    public getQuantity(): number {
+        return this.quantity;
+    }
+
+    public setQuantity(quantity: number): void {
+        this.quantity = quantity;
+    }
+
+    public getActivityCostExecutionId(): number {
+        return this.activityCostExecutionId;
+    }
+
+    public setActivityCostExecutionId(activityCostExecutionId: number): void {
+        this.activityCostExecutionId = activityCostExecutionId;
     }
 }
 
