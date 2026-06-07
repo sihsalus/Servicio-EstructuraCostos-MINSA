@@ -8,6 +8,11 @@ export enum TEquipmentEnum {
     FURNITURE = 2,
     INSTRUMENT = 3,
 }
+export enum TypeSupplyEnum {
+    FUNGIBLE = 1,
+    NON_FUNGIBLE = 2,
+}
+
 
 class CostStructureConst {
     public static readonly SpecialityEnum = SpecialityEnum;
@@ -22,6 +27,14 @@ class CostStructureConst {
     public static readonly INFRASTRUCTURE_BD_TABLE = "infrastructure";
     public static readonly INFRASTRUCTURE_COST_BD_TABLE = "infrastructure_costs";
     public static readonly INFRASTRUCTURE_PRICE_HISTORY_BD_TABLE = "infrastructure_price_history";
+
+    public static readonly SUPPLY_BD_TABLE = "supply";
+    public static readonly SUPPLY_INFO_HISTORY_BD_TABLE = "supply_info_history";
+
+
+    public static readonly COST_STRUCTURE_BD_TABLE = "cost_structure";
+    public static readonly MEDICAL_PROCEDURE_BD_TABLE = "medical_procedure";
+    public static readonly ACTIVITY_BD_TABLE = "activity";
 
 }
 export default CostStructureConst;

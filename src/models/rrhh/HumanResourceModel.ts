@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import EntityModel from "../EntityModel";
-import { SpecialityEnum } from "../../const/CostStructureConst";
+import EntityModel from "@/models/EntityModel";
+import { SpecialityEnum } from "@/const/CostStructureConst";
 
 class HumanResourceModel extends EntityModel {
     private name?: string;

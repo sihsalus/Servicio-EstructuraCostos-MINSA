@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import EntityModel from "../EntityModel";
-import CostStructureConst from "../../const/CostStructureConst";
+import EntityModel from "@/models/EntityModel";
+import CostStructureConst from "@/const/CostStructureConst";
 
 class InfrastructureCostModel extends EntityModel {
 
