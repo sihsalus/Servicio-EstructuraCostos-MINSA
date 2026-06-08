@@ -15,13 +15,13 @@ class InfrastructureCostModel extends EntityModel {
             ...EntityModel.attributesModel(),
             infrastructure_id: { type: DataTypes.INTEGER, allowNull: false,
                 references:{
-                    model: CostStructureConst.INFRASTRUCTURE_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.INFRASTRUCTURE,
                     key: 'id'
                 }
              },
             price_history_id: { type: DataTypes.INTEGER, allowNull: false,
                 references:{
-                    model: CostStructureConst.INFRASTRUCTURE_PRICE_HISTORY_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.INFRASTRUCTURE_PRICE_HISTORY,
                     key: 'id'
                 }
              },
@@ -29,7 +29,7 @@ class InfrastructureCostModel extends EntityModel {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: CostStructureConst.COST_STRUCTURE_BD_TABLE, 
+                    model: CostStructureConst.DB_TABLE_NAMES.COST_STRUCTURE, 
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',

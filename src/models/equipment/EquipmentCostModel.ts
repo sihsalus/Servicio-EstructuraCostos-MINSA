@@ -18,12 +18,12 @@ class EquipmentCostModel extends EntityModel {
             equipment_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.EQUIPMENT_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.EQUIPMENT, key: 'id' }
             },
             price_history_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.EQUIPMENT_PRICE_HISTORY_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.EQUIPMENT_PRICE_HISTORY, key: 'id' }
             },
             time_minutes: { type: DataTypes.INTEGER, allowNull: false },
             deprecation_per_minute: { type: DataTypes.DECIMAL(18, 6), allowNull: false },
@@ -31,7 +31,7 @@ class EquipmentCostModel extends EntityModel {
             activity_cost_execution_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.ACTIVITY_COST_EXECUTION_BD_TABLE, key: 'id' },
+                references: { model: CostStructureConst.DB_TABLE_NAMES.ACTIVITY_COST_EXECUTION, key: 'id' },
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE'
             }

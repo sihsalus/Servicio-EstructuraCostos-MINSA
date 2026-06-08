@@ -15,7 +15,7 @@ class EquipmentModel extends EntityModel {
             ...EntityModel.attributesModel(),
             name: { type: DataTypes.STRING, allowNull: false },
             description: { type: DataTypes.STRING, allowNull: true },
-            type_equipment: { type: DataTypes.ENUM, values: Object.values(TEquipmentEnum), allowNull: false },
+            type_equipment: { type: DataTypes.ENUM(...Object.values(TEquipmentEnum).map(v => String(v))), allowNull: false },
             useful_life_years: { type: DataTypes.INTEGER, allowNull: false },
             siga_code: { type: DataTypes.STRING, allowNull: true },
             is_group_asset: { type: DataTypes.BOOLEAN, allowNull: false , defaultValue: false},

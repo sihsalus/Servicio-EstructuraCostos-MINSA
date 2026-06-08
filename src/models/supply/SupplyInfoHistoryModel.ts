@@ -17,7 +17,7 @@ class SupplyInfoHistoryModel extends EntityModel {
             ...EntityModel.attributesModel(),
             supply_id: { type: DataTypes.INTEGER, allowNull: false,
                 references:{
-                    model: CostStructureConst.SUPPLY_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.SUPPLY,
                     key: 'id'
                 }
              },

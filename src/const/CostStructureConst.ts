@@ -18,24 +18,29 @@ class CostStructureConst {
     public static readonly SpecialityEnum = SpecialityEnum;
     public static readonly TEquipmentEnum = TEquipmentEnum;
 
-    public static readonly EQUIPMENT_BD_TABLE = "equipment";
-    public static readonly EQUIPMENT_PRICE_HISTORY_BD_TABLE = "equipment_price_history";
-    public static readonly EQUIPMENT_COST_BD_TABLE = "equipment_costs";
-    public static readonly HUMAN_RESOURCE_BD_TABLE = "human_resources";
-    public static readonly HUMAN_RESOURCE_COST_BD_TABLE = "human_resource_costs";
-    public static readonly FISCAL_YEAR_BD_TABLE = "fiscal_years";
-    public static readonly INFRASTRUCTURE_BD_TABLE = "infrastructure";
-    public static readonly INFRASTRUCTURE_COST_BD_TABLE = "infrastructure_costs";
-    public static readonly INFRASTRUCTURE_PRICE_HISTORY_BD_TABLE = "infrastructure_price_history";
 
-    public static readonly SUPPLY_BD_TABLE = "supply";
-    public static readonly SUPPLY_INFO_HISTORY_BD_TABLE = "supply_info_history";
+    public static readonly DB_TABLE_NAMES = {
+        EQUIPMENT : "equipment",
+        EQUIPMENT_PRICE_HISTORY : "equipment_price_history",
+        EQUIPMENT_COST : "equipment_cost",
+        HUMAN_RESOURCE : "human_resources",
+        HUMAN_RESOURCE_COST : "human_resource_cost",
+        FISCAL_YEAR : "fiscal_year",
+        INFRASTRUCTURE : "infrastructure",
+        INFRASTRUCTURE_COST : "infrastructure_cost",
+        INFRASTRUCTURE_PRICE_HISTORY : "infrastructure_price_history",
+        SUPPLY: "supply",
+        SUPPLY_INFO_HISTORY : "supply_info_history",
+        SUPPLY_COST : "supply_cost",
+        COST_STRUCTURE : "cost_structure",
+        MEDICAL_PROCEDURE : "medical_procedure",
+        ACTIVITY : "activity",
+        ACTIVITY_COST_EXECUTION : "activity_cost_execution"
+    }
 
-
-    public static readonly COST_STRUCTURE_BD_TABLE = "cost_structure";
-    public static readonly MEDICAL_PROCEDURE_BD_TABLE = "medical_procedure";
-    public static readonly ACTIVITY_BD_TABLE = "activity";
-    public static readonly ACTIVITY_COST_EXECUTION_BD_TABLE = "activity_cost_execution";
+ 
 
 }
+
+
 export default CostStructureConst;

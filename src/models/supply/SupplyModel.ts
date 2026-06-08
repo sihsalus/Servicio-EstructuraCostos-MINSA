@@ -14,7 +14,7 @@ class SupplyModel extends EntityModel {
             ...EntityModel.attributesModel(),
             siga_code: { type: DataTypes.STRING, allowNull: true },
             name: { type: DataTypes.STRING, allowNull: false },
-            type: { type: DataTypes.ENUM,values: (Object.values(TypeSupplyEnum)), allowNull: false },
+            type: { type: DataTypes.ENUM(...Object.values(TypeSupplyEnum).map(v => String(v))), allowNull: false },
             consumption_unit: { type: DataTypes.STRING, allowNull: false }
         };
     }

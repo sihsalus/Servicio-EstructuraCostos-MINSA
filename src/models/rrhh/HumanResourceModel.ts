@@ -11,7 +11,9 @@ class HumanResourceModel extends EntityModel {
         return {
             ...EntityModel.attributesModel(),
             name: { type: DataTypes.STRING, allowNull: true },
-            speciality: { type: DataTypes.ENUM, values: Object.values(SpecialityEnum), allowNull: false }
+            speciality: { 
+                 type: DataTypes.ENUM(...Object.values(SpecialityEnum).map(v => String(v)))
+                 , allowNull: false }
         };
     }
 

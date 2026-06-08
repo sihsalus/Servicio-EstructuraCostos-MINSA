@@ -15,7 +15,7 @@ class ActivityCostExecutionModel extends EntityModel{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: CostStructureConst.COST_STRUCTURE_BD_TABLE, 
+                    model: CostStructureConst.DB_TABLE_NAMES.COST_STRUCTURE, 
                     key: 'id'
                 }
             },
@@ -23,7 +23,7 @@ class ActivityCostExecutionModel extends EntityModel{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: CostStructureConst.ACTIVITY_BD_TABLE, 
+                    model: CostStructureConst.DB_TABLE_NAMES.ACTIVITY, 
                     key: 'id'
                 }
             },

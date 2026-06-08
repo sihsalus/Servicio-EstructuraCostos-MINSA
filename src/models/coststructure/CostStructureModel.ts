@@ -13,7 +13,7 @@ class CostStructureModel extends EntityModel {
             ...EntityModel.attributesModel(),
             medical_procedure_id: { type: DataTypes.INTEGER, allowNull: false,
                 references: {
-                    model: CostStructureConst.MEDICAL_PROCEDURE_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.MEDICAL_PROCEDURE,
                     key: 'id'
                 }
              },

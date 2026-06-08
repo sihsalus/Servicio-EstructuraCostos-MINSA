@@ -16,17 +16,17 @@ class SupplyCostModel extends EntityModel {
             supply_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.SUPPLY_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.SUPPLY_BD_TABLE, key: 'id' }
             },
             supply_info_history_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.SUPPLY_INFO_HISTORY_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.SUPPLY_INFO_HISTORY_BD_TABLE, key: 'id' }
             },
             activity_cost_execution_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.ACTIVITY_COST_EXECUTION_BD_TABLE, key: 'id' },
+                references: { model: CostStructureConst.DB_TABLE_NAMES.ACTIVITY_COST_EXECUTION_BD_TABLE, key: 'id' },
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE'
             },

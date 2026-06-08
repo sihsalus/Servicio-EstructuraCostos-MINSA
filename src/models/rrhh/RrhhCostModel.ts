@@ -20,7 +20,7 @@ class RrhhCostModel extends EntityModel{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: CostStructureConst.HUMAN_RESOURCE_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.HUMAN_RESOURCE_BD_TABLE,
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',
@@ -30,7 +30,7 @@ class RrhhCostModel extends EntityModel{
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: {
-                    model: CostStructureConst.ACTIVITY_COST_EXECUTION_BD_TABLE,
+                    model: CostStructureConst.DB_TABLE_NAMES.ACTIVITY_COST_EXECUTION_BD_TABLE,
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',
