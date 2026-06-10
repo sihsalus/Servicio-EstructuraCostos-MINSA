@@ -38,6 +38,9 @@ class CostStructureConst {
         ACTIVITY_COST_EXECUTION : "activity_cost_execution"
     }
 
+    public static MIN_YEAR_COST_SYSTEM = 1990;
+    public static MAX_YEAR_COST_SYSTEM = 2100;
+    public static DEFAULT_USER_SYSTEM = "GIDIS";
 }
 
 
