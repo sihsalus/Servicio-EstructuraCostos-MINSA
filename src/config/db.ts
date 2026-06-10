@@ -1,4 +1,7 @@
 import { Sequelize,Dialect } from "sequelize";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const dbName = process.env.DB_NAME || "cost_structure_db";
 const dbUser = process.env.DB_USER || "postgres";
