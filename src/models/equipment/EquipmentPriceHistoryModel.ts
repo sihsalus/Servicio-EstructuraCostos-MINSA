@@ -15,7 +15,7 @@ class EquipmentPriceHistoryModel extends EntityModel {
             equipment_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.DB_TABLE_NAMES.EQUIPMENT_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.EQUIPMENT, key: 'id' }
             },
             price_market: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
             start_date: { type: DataTypes.DATEONLY, allowNull: false, defaultValue: DataTypes.NOW },

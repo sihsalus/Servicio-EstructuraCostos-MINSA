@@ -16,7 +16,7 @@ class InfrastructureValueHistoryModel extends EntityModel {
             infrastructure_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                references: { model: CostStructureConst.DB_TABLE_NAMES.INFRASTRUCTURE_BD_TABLE, key: 'id' }
+                references: { model: CostStructureConst.DB_TABLE_NAMES.INFRASTRUCTURE, key: 'id' }
             },
             value_per_m2: { type: DataTypes.DECIMAL(10, 2), allowNull: false }, // Vc
             total_construction_value: { type: DataTypes.DECIMAL(12, 2), allowNull: false }, // Cups

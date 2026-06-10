@@ -38,8 +38,6 @@ class CostStructureConst {
         ACTIVITY_COST_EXECUTION : "activity_cost_execution"
     }
 
- 
-
 }
 
 

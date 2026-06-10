@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
       "allowJs": true,                     // Allow to import model from js declaration
-      "target": "ES6",                     // Establece la versión de salida del código compilado
-      "module": "commonjs",                // Usa el sistema de módulos de Node.js
+      "target": "ES2020",                     // Establece la versión de salida del código compilado
+      "module": "commonjs",                // Usa el sistema de módulos de Node.js,
       "strict": true,                      // Habilita las comprobaciones estrictas de TypeScript
       "esModuleInterop": true,             // Permite importar módulos como ES6 en lugar de CommonJS
       "skipLibCheck": true,                // Omite la comprobación de tipos en los archivos de las librerías
@@ -14,6 +14,9 @@
       "paths": {
         "@/*": ["src/*"]
       }
+    },
+    "ts-node": {
+      "esm": true            
     },
     "include": ["src/**/*"],             // Incluir todos los archivos bajo src (ts, js, json, assets)
     "exclude": ["node_modules", "dist"]     // Archivos y directorios a excluir
