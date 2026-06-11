@@ -50,25 +50,36 @@ class ScrapingService {
 
            const rows = $('table tbody tr');
            const dataTable : FiscalYear[] = []
-
+           let reachedMinYear = false;
            rows.each((i,row) => {
-                if(i > 0){
+                if(i > 0 && !reachedMinYear){
+                    const fiscalYear : FiscalYear = {
+                        fiscalYear:0,
+                        uitValue:0,
+                        legalBase:""
+                    }; 
+
                     $(row).find('th, td').each((j,cell) =>{
                         const cellText = $(cell).text().trim();
                         
-                        if(cellText.match(String(CostStructureConst.SUNAT_ABOUT.MIN_YEAR_UIT)))
-                            return false;
+                        if(cellText === String(CostStructureConst.SUNAT_ABOUT.MIN_YEAR_UIT)){
+                            reachedMinYear = true
+                        }
 
-                        const fiscalYear : FiscalYear = {
-                            fiscalYear:0,
-                            uitValue:0,
-                            legalBase:""
-                        }; 
-                        this.readDataTableSunatIndexUIT(fiscalYear,cellText,j);
+                        ScrapingService.readDataTableSunatIndexUIT(fiscalYear,cellText,j);
+                    });
+                    
+                    if(fiscalYear.fiscalYear > 0){
                         dataTable.push(fiscalYear);
-                });
+                    }
+
+                    if(reachedMinYear) {
+                        return false;
+                    }
                 }
-           })
+           });
+
+           return dataTable;
         
         }catch(error){
             if (error instanceof CustomError) throw error;
