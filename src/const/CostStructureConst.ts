@@ -41,6 +41,11 @@ class CostStructureConst {
     public static MIN_YEAR_COST_SYSTEM = 1990;
     public static MAX_YEAR_COST_SYSTEM = 2100;
     public static DEFAULT_USER_SYSTEM = "GIDIS";
+
+    public static readonly SUNAT_ABOUT = {
+        URL_SUNAT_UIT : "https://www.sunat.gob.pe/indicestasas/uit.html",
+        MIN_YEAR_UIT : 2000,
+    }
 }
 
 

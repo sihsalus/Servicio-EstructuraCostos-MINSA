@@ -2,12 +2,12 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import {FiscalYear } from '@/interfaces/FiscalYearInterface';
 import CustomError from '@/utils/CustomError';
+import CostStructureConst from '@/const/CostStructureConst';
 class ScrapingService {
-    public static URL_SUNAT_UIT = "https://www.sunat.gob.pe/indicestasas/uit.html";
     //asumo que SUNAT se renderiza desde sv XD
     static async scrapeNextSunatIndexUIT()  { 
         try{
-           const { data : html} = await axios.get(this.URL_SUNAT_UIT); 
+           const { data : html} = await axios.get(CostStructureConst.SUNAT_ABOUT.URL_SUNAT_UIT); 
            const $ = cheerio.load(html);
 
            const rows = $('table tbody tr');
@@ -21,18 +21,7 @@ class ScrapingService {
                 if(i == 1) {
                     $(row).find('th, td').each((j,cell) =>{
                         const cellText = $(cell).text().trim();
-                        switch(j){
-                            case 0:
-                                newFiscalYear.fiscalYear = parseInt(cellText,10);
-                                break;
-                            case 1:
-                                const cleanValue = cellText.replace(/[^0-9]/g, '');
-                                newFiscalYear.uitValue = parseInt(cleanValue, 10);
-                                break;
-                            case 2:
-                                newFiscalYear.legalBase = $(cell).text().trim();
-                                break;
-                        }
+                        this.readDataTableSunatIndexUIT(newFiscalYear,cellText,j);
                     });
 
                     return false;
@@ -52,7 +41,57 @@ class ScrapingService {
                 500
             );
         }
+    }
 
+    static async scrapeSunatIndexUITs(){
+        try{
+           const { data : html} = await axios.get(CostStructureConst.SUNAT_ABOUT.URL_SUNAT_UIT); 
+           const $ = cheerio.load(html);
+
+           const rows = $('table tbody tr');
+           const dataTable : FiscalYear[] = []
+
+           rows.each((i,row) => {
+                if(i > 0){
+                    $(row).find('th, td').each((j,cell) =>{
+                        const cellText = $(cell).text().trim();
+                        
+                        if(cellText.match(String(CostStructureConst.SUNAT_ABOUT.MIN_YEAR_UIT)))
+                            return false;
+
+                        const fiscalYear : FiscalYear = {
+                            fiscalYear:0,
+                            uitValue:0,
+                            legalBase:""
+                        }; 
+                        this.readDataTableSunatIndexUIT(fiscalYear,cellText,j);
+                        dataTable.push(fiscalYear);
+                });
+                }
+           })
+        
+        }catch(error){
+            if (error instanceof CustomError) throw error;
+
+            throw new CustomError(
+                `Error al realizar web scraping en SUNAT: ${error instanceof Error ? error.message : 'Error desconocido'}`, 
+                500
+            );
+        }
+    }
+    static readDataTableSunatIndexUIT(fiscalYear: FiscalYear,cellText: string,j:number,){
+        switch(j){
+            case 0:
+                fiscalYear.fiscalYear = parseInt(cellText,10);
+                break;
+            case 1:
+                const cleanValue = cellText.replace(/[^0-9]/g, '');
+                fiscalYear.uitValue = parseInt(cleanValue, 10);
+                break;
+            case 2:
+                fiscalYear.legalBase = cellText
+                break;
+        }
     }
 }
 
