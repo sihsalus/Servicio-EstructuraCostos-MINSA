@@ -10,6 +10,12 @@ export const FiscalYearSchema = EntitySchema.extend({
 
 export type FiscalYearI = z.infer<typeof FiscalYearSchema>;
 
+export const FiscalYearPickSchema = FiscalYearSchema.pick({
+    fiscalYear: true,
+    uitValue: true,
+    legalBase:true,
+});
+
 export const CreateFiscalYearSchema = FiscalYearSchema.pick({
     fiscalYear: true,
     uitValue: true,
@@ -18,3 +24,5 @@ export const CreateFiscalYearSchema = FiscalYearSchema.pick({
 });
 
 export type CreateFiscalYearInput = z.infer<typeof CreateFiscalYearSchema>
+export type FiscalYear = z.infer<typeof FiscalYearPickSchema>
+
