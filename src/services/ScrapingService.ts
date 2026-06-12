@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import {FiscalYear } from '@/interfaces/FiscalYearInterface';
 import CustomError from '@/utils/CustomError';
 import CostStructureConst from '@/const/CostStructureConst';
+import { CreateFiscalYearInput } from '@/interfaces/FiscalYearInterface';
 class ScrapingService {
     //asumo que SUNAT se renderiza desde sv XD
     static async scrapeNextSunatIndexUIT()  { 
@@ -11,7 +11,7 @@ class ScrapingService {
            const $ = cheerio.load(html);
 
            const rows = $('table tbody tr');
-           const newFiscalYear : FiscalYear ={
+           const newFiscalYear : CreateFiscalYearInput ={
             fiscalYear:0,
             uitValue:0,
             legalBase:""
@@ -49,11 +49,11 @@ class ScrapingService {
            const $ = cheerio.load(html);
 
            const rows = $('table tbody tr');
-           const dataTable : FiscalYear[] = []
+           const dataTable : CreateFiscalYearInput[] = []
            let reachedMinYear = false;
            rows.each((i,row) => {
                 if(i > 0 && !reachedMinYear){
-                    const fiscalYear : FiscalYear = {
+                    const fiscalYear : CreateFiscalYearInput = {
                         fiscalYear:0,
                         uitValue:0,
                         legalBase:""
@@ -90,7 +90,7 @@ class ScrapingService {
             );
         }
     }
-    static readDataTableSunatIndexUIT(fiscalYear: FiscalYear,cellText: string,j:number,){
+    private static readDataTableSunatIndexUIT(fiscalYear: CreateFiscalYearInput,cellText: string,j:number,){
         switch(j){
             case 0:
                 fiscalYear.fiscalYear = parseInt(cellText,10);
