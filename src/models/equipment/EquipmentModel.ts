@@ -5,7 +5,7 @@ import EntityModel from "@/models/EntityModel";
 class EquipmentModel extends EntityModel {
     private name!: string;
     private description?: string;
-    private typeEquipment!: TEquipmentEnum;
+    private typeEquipment!: string;
     private usefulLifeYears!: number;   
     private sigaCode?: string;
     private isGroupAsset!: boolean;
@@ -15,7 +15,7 @@ class EquipmentModel extends EntityModel {
             ...EntityModel.attributesModel(),
             name: { type: DataTypes.STRING, allowNull: false },
             description: { type: DataTypes.STRING, allowNull: true },
-            type_equipment: { type: DataTypes.ENUM(...Object.values(TEquipmentEnum).map(v => String(v))), allowNull: false },
+            type_equipment: { type: DataTypes.STRING, allowNull: false },
             useful_life_years: { type: DataTypes.INTEGER, allowNull: false },
             siga_code: { type: DataTypes.STRING, allowNull: true },
             is_group_asset: { type: DataTypes.BOOLEAN, allowNull: false , defaultValue: false},
@@ -37,11 +37,11 @@ class EquipmentModel extends EntityModel {
     public setDescription(description: string): void {
         this.description = description;
     }
-    public getTypeEquipment(): TEquipmentEnum {
+    public getTypeEquipment(): string {
         return this.typeEquipment;
     }
 
-    public setTypeEquipment(typeEquipment: TEquipmentEnum): void {
+    public setTypeEquipment(typeEquipment: string): void {
         this.typeEquipment = typeEquipment;
     }
     public getUsefulLifeYears(): number {

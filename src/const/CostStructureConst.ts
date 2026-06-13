@@ -1,7 +1,8 @@
 export enum SpecialityEnum {
-    MEDICO,
-    ENFERMERO,
-    TECNICO,
+    MEDICO_ESPECIALISTA,
+    MEDICO_GENERAL,
+    ADMINISTRATIVO,
+    ENFERMERA
 }
 export enum TEquipmentEnum {
     EQUIPMENT = 1,

@@ -3,33 +3,24 @@ import EntityModel from "@/models/EntityModel";
 import { SpecialityEnum } from "@/const/CostStructureConst";
 
 class HumanResourceModel extends EntityModel {
-    private name?: string;
-    private speciality!: SpecialityEnum;
+    private speciality!: string;
 
 
     static attributesModel(){
         return {
             ...EntityModel.attributesModel(),
-            name: { type: DataTypes.STRING, allowNull: true },
             speciality: { 
-                 type: DataTypes.ENUM(...Object.values(SpecialityEnum).map(v => String(v)))
+                 type: DataTypes.STRING
                  , allowNull: false }
         };
     }
 
-    public getName(): string | undefined {
-        return this.name;
-    }
-
-    public setName(name: string): void {
-        this.name = name;
-    }
     
-    public getSpeciality(): SpecialityEnum {
+    public getSpeciality(): string {
         return this.speciality;
     }   
 
-    public setSpeciality(speciality: SpecialityEnum): void {
+    public setSpeciality(speciality: string): void {
         this.speciality = speciality;
     }
 }
