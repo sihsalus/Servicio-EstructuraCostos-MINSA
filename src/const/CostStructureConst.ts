@@ -1,17 +1,19 @@
 export enum SpecialityEnum {
     MEDICO_ESPECIALISTA,
     MEDICO_GENERAL,
+    MEDICO_CIRUJANO,
     ADMINISTRATIVO,
     ENFERMERA
 }
 export enum TEquipmentEnum {
-    EQUIPMENT = 1,
-    FURNITURE = 2,
-    INSTRUMENT = 3,
+    EQUIPAMIENTO,
+    MUEBLES,
+    ENSERES,
+    INFORMATICO,
 }
 export enum TypeSupplyEnum {
-    FUNGIBLE = 1,
-    NON_FUNGIBLE = 2,
+    FUNGIBLE ,
+    NO_FUNGIBLE
 }
 
 

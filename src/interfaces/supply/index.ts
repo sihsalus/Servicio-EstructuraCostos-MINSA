@@ -13,7 +13,7 @@ export type Supply = z.infer<typeof SupplySchema>;
 export const CreateSupplySchema = SupplySchema.pick({
     sigaCode:true,
     name:true,
-    type: true,
+    type: true, 
     consumptionUnit: true
 }).extend({
     createdBy: z.string().optional()

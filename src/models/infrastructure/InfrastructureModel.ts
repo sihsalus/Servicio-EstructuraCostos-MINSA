@@ -2,7 +2,6 @@ import { DataTypes } from "sequelize";
 import EntityModel from "@/models/EntityModel";
 
 class InfrastructureModel extends EntityModel {
-    private code!: string;
     private name!: string;
     private description?: string;
     private areaM2!: number;
@@ -10,19 +9,10 @@ class InfrastructureModel extends EntityModel {
     static attributesModel() {
         return {
             ...EntityModel.attributesModel(),
-            code: { type: DataTypes.STRING, allowNull: false, unique: true },
             name: { type: DataTypes.STRING, allowNull: false },
             description: { type: DataTypes.STRING, allowNull: true },
             area_m2: { type: DataTypes.DECIMAL(10, 2), allowNull: false }
         };
-    }
-
-    public getCode(): string {
-        return this.code;
-    }
-
-    public setCode(code: string): void {
-        this.code = code;
     }
 
     public getName(): string {

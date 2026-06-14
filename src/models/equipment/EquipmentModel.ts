@@ -8,7 +8,7 @@ class EquipmentModel extends EntityModel {
     private typeEquipment!: string;
     private usefulLifeYears!: number;   
     private sigaCode?: string;
-    private isGroupAsset!: boolean;
+    private isGroupAsset!: boolean; //REPLANTEAR
 
     static attributesModel() {
         return {
