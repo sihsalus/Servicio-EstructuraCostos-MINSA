@@ -16,7 +16,7 @@
       }
     },
     "ts-node": {
-      "esm": true            
+      "esm": false            
     },
     "include": ["src/**/*"],             // Incluir todos los archivos bajo src (ts, js, json, assets)
     "exclude": ["node_modules", "dist"]     // Archivos y directorios a excluir

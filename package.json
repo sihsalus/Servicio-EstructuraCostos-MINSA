@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --project tsconfig.json -r tsconfig-paths/register src/index.ts",
-    "seed": "ts-node --esm -r tsconfig-paths/register src/seeds/main.ts",
+    "seed": "ts-node -r tsconfig-paths/register src/seeds/main.ts",
     "clean": "rimraf dist",
     "build": "pnpm run clean && tsc && tsc-alias",
     "start": "node dist/index.js"

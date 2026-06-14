@@ -1,4 +1,4 @@
-import sequelize from "@/config/db";
+import sequelize from "../config/db";
 import { runAllSeeders } from "./run"; 
 const executeStandaloneSeeder = async () => {
     try {
