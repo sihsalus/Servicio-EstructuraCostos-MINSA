@@ -1,3 +1,4 @@
+import { syncronizeDataTables } from "../config/synchronize";
 import sequelize from "../config/db";
 import { runAllSeeders } from "./run"; 
 const executeStandaloneSeeder = async () => {
@@ -5,7 +6,7 @@ const executeStandaloneSeeder = async () => {
         
         await sequelize.authenticate();
         console.log("Conexión establecida con PostgreSQL en Docker.");
-
+        await syncronizeDataTables();
         await runAllSeeders();
         await sequelize.close();
         console.log("Conexión de Base de Datos cerrada. Proceso terminado.");

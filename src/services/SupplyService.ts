@@ -20,7 +20,7 @@ class SupplyService {
             name,
             type,
             consumption_unit: consumptionUnit,
-            created_by: createdBy || CostStructureConst.DEFAULT_USER_SYSTEM
+            created_by: createdBy ?? CostStructureConst.DEFAULT_USER_SYSTEM
         });
     }
 }

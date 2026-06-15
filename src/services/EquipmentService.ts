@@ -23,7 +23,7 @@ class EquipmentService {
             useful_life_years: usefulLifeYears,
             siga_code: sigaCode || null,
             is_group_asset: isGroupAsset || false,
-            created_by: createdBy || CostStructureConst.DEFAULT_USER_SYSTEM
+            created_by: createdBy ?? CostStructureConst.DEFAULT_USER_SYSTEM
         });
     }
 }

@@ -1,3 +1,4 @@
+import CostStructureConst from "@/const/CostStructureConst";
 import { DataTypes,Model } from "sequelize";
 
 class EntityModel extends Model {
@@ -17,7 +18,7 @@ class EntityModel extends Model {
             id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
             uuid: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, allowNull: false },
             createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-            createdBy: { type: DataTypes.STRING, allowNull: false },
+            createdBy: { type: DataTypes.STRING, allowNull: false, defaultValue: CostStructureConst.DEFAULT_USER_SYSTEM },
             active: { type: DataTypes.BOOLEAN, defaultValue: true, allowNull: false },
             changedAt: { type: DataTypes.DATE, allowNull: true },
             changedBy: { type: DataTypes.STRING, allowNull: true },
