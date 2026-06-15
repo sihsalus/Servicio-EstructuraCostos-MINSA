@@ -10,6 +10,7 @@ import InfrastructureModel from "@/models/infrastructure/InfrastructureModel";
 import HumanResourceModel from "@/models/rrhh/HumanResourceModel";
 import EquipmentService from "@/services/EquipmentService";
 import FiscalYearService from "@/services/FiscalYearService";
+import InfrastructureService from "@/services/InfrastructureService";
 import ScrapingService from "@/services/ScrapingService";
 import SupplyService from "@/services/SupplyService";
 
@@ -149,7 +150,7 @@ const seedInfrastructure = async () =>{
         ];
 
         for(const infra of infras){
-            await InfrastructureModel.create(infra);
+            await InfrastructureService.createInfrastructure(infra);
         }
 
         console.info("Sembrado de Infraestructura completado con éxito.");
