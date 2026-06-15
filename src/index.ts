@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import sequelize from '@/config/db';
 import { syncronizeDataTables } from '@/config/synchronize';
+import rootRouter from '@/router';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 const SV_HOST = process.env.SV_HOST || 'http://localhost';
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api",rootRouter);
 
 app.get('/', (req, res) => {
   res.send('Servidor EC MINSA funcionando');
