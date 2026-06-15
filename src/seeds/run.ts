@@ -8,6 +8,7 @@ import { CreateSupplyInput } from "@/interfaces/supply";
 import MedicalProcedureModel from "@/models/coststructure/MedicalProcedureModel";
 import InfrastructureModel from "@/models/infrastructure/InfrastructureModel";
 import HumanResourceModel from "@/models/rrhh/HumanResourceModel";
+import CpmsService from "@/services/cpmsService";
 import EquipmentService from "@/services/EquipmentService";
 import FiscalYearService from "@/services/FiscalYearService";
 import InfrastructureService from "@/services/InfrastructureService";
@@ -181,7 +182,7 @@ const seedCPMS = async() =>{
         ]
 
         for(const cpm of cpmsList){
-            await MedicalProcedureModel.create(cpm);
+            await CpmsService.createCPMS(cpm);
         }
 
         console.info("Sembrado de CPMS completado con éxito.");
@@ -194,7 +195,7 @@ const seedCPMS = async() =>{
 
 const seedEquipments = async () => {
     try {
-        console.info("🌱 Inicializando catálogo de equipamiento basado en la Tabla N° 14 del MINSA...");
+        console.info("Inicializando catálogo de equipamiento basado en la Tabla N° 14 del MINSA...");
 
         const minsaTemplates: CreateEquipmentInput[] = [
             {
@@ -251,7 +252,7 @@ const seedEquipments = async () => {
 
 const seedSupplies = async () => {
     try {
-        console.info("🌱 Inicializando catálogo de insumos basado en las Tablas N° 12 y Hoja de Costeo MINSA...");
+        console.info("Inicializando catálogo de insumos basado en las Tablas N° 12 y Hoja de Costeo MINSA...");
 
         const minsaSupplies: CreateSupplyInput[] = [
             {

@@ -91,16 +91,19 @@ class ScrapingService {
         }
     }
     private static readDataTableSunatIndexUIT(fiscalYear: CreateFiscalYearInput,cellText: string,j:number,){
+        const cleanText = cellText.replace(/\s+/g, ' ').trim();
+
         switch(j){
             case 0:
-                fiscalYear.fiscalYear = parseInt(cellText,10);
+                const cleanYear = cleanText.replace(/[^0-9]/g, '');
+                fiscalYear.fiscalYear = parseInt(cleanYear, 10);
                 break;
             case 1:
-                const cleanValue = cellText.replace(/[^0-9]/g, '');
+                const cleanValue = cleanText.replace(/[^0-9]/g, '');
                 fiscalYear.uitValue = parseInt(cleanValue, 10);
                 break;
             case 2:
-                fiscalYear.legalBase = cellText
+                fiscalYear.legalBase = cleanText
                 break;
         }
     }
