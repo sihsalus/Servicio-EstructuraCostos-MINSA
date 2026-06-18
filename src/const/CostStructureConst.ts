@@ -38,7 +38,9 @@ class CostStructureConst {
         COST_STRUCTURE : "cost_structure",
         MEDICAL_PROCEDURE : "medical_procedure",
         ACTIVITY : "activity",
-        ACTIVITY_COST_EXECUTION : "activity_cost_execution"
+        ACTIVITY_COST_EXECUTION : "activity_cost_execution",
+        IPRESS_GLOBAL_COST:"ipress_global_cost",
+        UPSS_ANNUAL_CONFIG:"upss_annual_config",
     }
 
     public static MIN_YEAR_COST_SYSTEM = 1990;
