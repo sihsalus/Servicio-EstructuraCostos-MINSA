@@ -72,6 +72,11 @@ class InfrastructureCostModel extends EntityModel {
         this.totalStandarCost = totalStandarCost;
     }
 
+    public getCostStructureId(): number{
+        return this.costStructureId;
+    }
+
+
 }
 
 export default InfrastructureCostModel;
