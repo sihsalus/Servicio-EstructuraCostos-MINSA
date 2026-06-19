@@ -11,6 +11,8 @@ import FiscalYearConfigModel from "@/models/FiscalYearModel";
 import InfrastructureCostModel from "@/models/infrastructure/InfrastructureCostModel";
 import InfrastructureModel from "@/models/infrastructure/InfrastructureModel";
 import InfrastructureValueHistoryModel from "@/models/infrastructure/InfrastructureValueHistoryModel";
+import UpssAnnualConfigModel from "@/models/infrastructure/UpssAnualConfigModel";
+import IpressGlobalCostModel from "@/models/IpressGlobalCostModel";
 import HumanResourceModel from "@/models/rrhh/HumanResourceModel";
 import RrhhCostModel from "@/models/rrhh/RrhhCostModel";
 import SupplyCostModel from "@/models/supply/SupplyCostModel";
@@ -112,6 +114,16 @@ const initializeTables =  () => {
     FiscalYearConfigModel.init(FiscalYearConfigModel.attributesModel(), {
         sequelize,
         tableName: CostStructureConst.DB_TABLE_NAMES.FISCAL_YEAR
+    });
+
+    IpressGlobalCostModel.init(IpressGlobalCostModel.attributesModel(),{
+        sequelize,
+        tableName: CostStructureConst.DB_TABLE_NAMES.IPRESS_GLOBAL_COST
+    });
+
+    UpssAnnualConfigModel.init(UpssAnnualConfigModel.attributesModel(),{
+        sequelize,
+        tableName: CostStructureConst.DB_TABLE_NAMES.UPSS_ANNUAL_CONFIG
     });
 
 }
@@ -257,6 +269,11 @@ const defineAssociations = () => {
         as: 'infrastructureCost' 
     });
 
+    CostStructureModel.belongsTo(FiscalYearConfigModel, {
+        foreignKey: 'fiscal_year_id',
+        as: 'fiscalYearContext' // Te permitirá traer toda la info de la UIT y Base Legal con un simple 'include'
+    });
+
     InfrastructureCostModel.belongsTo(CostStructureModel, { 
         foreignKey: 'cost_structure_id',
         as: 'costStructure' 
@@ -272,5 +289,35 @@ const defineAssociations = () => {
         foreignKey: 'price_history_id', 
         as: 'appliedValue'
      });
+
+     FiscalYearConfigModel.hasOne(IpressGlobalCostModel,{
+        foreignKey:'fiscal_year_id',
+        as:'globalCost'
+     });
+
+    IpressGlobalCostModel.belongsTo(FiscalYearConfigModel, {
+        foreignKey: 'fiscal_year_id',
+        as: 'fiscalYear'
+    });
+
+    // La configuración anual de prorrateo pertenece a una UPSS específica (Relación 1 a N)
+    InfrastructureModel.hasMany(UpssAnnualConfigModel, {
+        foreignKey: 'infrastructure_id',
+        as: 'annualConfigs'
+    });
+    UpssAnnualConfigModel.belongsTo(InfrastructureModel, {
+        foreignKey: 'infrastructure_id',
+        as: 'infrastructure'
+    });
+
+    // La configuración anual de prorrateo también pertenece a un Año Fiscal (Relación 1 a N)
+    FiscalYearConfigModel.hasMany(UpssAnnualConfigModel, {
+        foreignKey: 'fiscal_year_id',
+        as: 'upssConfigs'
+    });
+    UpssAnnualConfigModel.belongsTo(FiscalYearConfigModel, {
+        foreignKey: 'fiscal_year_id',
+        as: 'fiscalYear'
+    }); 
 
 }
