@@ -4,6 +4,22 @@ import InfrastructureModel from "@/models/infrastructure/InfrastructureModel";
 import CustomError from "@/utils/CustomError";
 
 class InfrastructureService{
+    static async getAll(){
+        return await InfrastructureModel.findAll();
+    }
+
+    static async findById(id : number){
+
+        const existing = await InfrastructureModel.findOne({
+            where:{id}
+        });
+
+        if(!existing){
+            throw new CustomError("Infraestructura no encontrada",404);
+        }
+
+        return existing;
+    }
 
     static async createInfrastructure(data: CreateInfrastructureInput){
         const validation = CreateInfrastructureSchema.safeParse(data);

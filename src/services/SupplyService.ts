@@ -4,6 +4,11 @@ import SupplyModel from "@/models/supply/SupplyModel";
 import CustomError from "@/utils/CustomError";
 
 class SupplyService {
+
+    static async getAll(){
+        return SupplyModel.findAll();
+    }
+
     static async createSupply(data: CreateSupplyInput) {
         const validation = CreateSupplySchema.safeParse(data);
         if (!validation.success) {

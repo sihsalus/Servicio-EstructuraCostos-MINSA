@@ -5,6 +5,10 @@ import CustomError from "@/utils/CustomError";
 
 class CpmsService{
 
+    static async getAll(){
+        return await MedicalProcedureModel.findAll();
+    }
+
     static  async createCPMS(data: CreateMedicalProcedureInput){
         const validation = CreateMedicalProcedureSchema.safeParse(data);
         if (!validation.success) {

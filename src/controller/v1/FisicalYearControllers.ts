@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 
 class FisicalYearController {
 
-    static async getByYear(req: Request, res:Response){
+    static async getByYear(req: Request<{year: string}>, res:Response){
         try{
             const {year} = req.params;
 
@@ -14,7 +14,8 @@ class FisicalYearController {
                 return;
             }
             res.status(200).json(fiscalYear);
-        }catch(error){
+        }   
+        catch(error){
 
         }
     }

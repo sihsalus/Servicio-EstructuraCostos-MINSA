@@ -5,6 +5,10 @@ import CustomError from "@/utils/CustomError";
 
 class HumanResourceService {
 
+    static async getAll(){
+        await HumanResourceModel.findAll();
+    }
+
     static async createHumanResource(data : CreateHumanResourceInput){
         const validation = CreateHumanResourceSchema.safeParse(data);
 

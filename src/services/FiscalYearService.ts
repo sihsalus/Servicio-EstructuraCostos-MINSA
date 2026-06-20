@@ -31,6 +31,10 @@ class FiscalYearService {
             }
         })
 
+        if (existing) {
+            throw new CustomError(`El año fiscal ${fiscalYear} ya se encuentra registrado`, 409);
+        }
+
         const newFiscalYear =  await FiscalYearConfigModel.create({
             fiscal_year: fiscalYear,
             uit_value: uitValue,

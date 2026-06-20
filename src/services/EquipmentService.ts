@@ -5,6 +5,11 @@ import EquipmentModel from "@/models/equipment/EquipmentModel";
 import CustomError from "@/utils/CustomError";
 
 class EquipmentService {
+
+    static async getAll(){
+        return await EquipmentModel.findAll();
+    }
+
     static async createEquipment(data: CreateEquipmentInput) {
         const validation = CreateEquipmentSchema.safeParse(data);
         if (!validation.success) {
