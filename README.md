@@ -9,3 +9,5 @@ Este proyecto es una API en Node.js (Express) construida con TypeScript que gene
  * Typescript
  * Sequelize
  * Axios / cheerio
+ * pnpm
+ 

@@ -8,7 +8,7 @@ class HumanResourceController{
             const rrhhs = await HumanResourceService.getAll();
             res.status(200).json(rrhhs);
         }catch(e){
-
+            
         }
     }
 }
