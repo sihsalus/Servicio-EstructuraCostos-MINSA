@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import EntityModel from "@/models/EntityModel";
+import InfrastructureModel from "@/models/infrastructure/InfrastructureModel";
 
 class UpssAnnualConfigModel extends EntityModel {
     private infrastructureId!: number; 
@@ -13,6 +14,8 @@ class UpssAnnualConfigModel extends EntityModel {
     private unitBasicServicesCost!: number;   
     private unitAdminCost!: number;           
     private unitGeneralServicesCost!: number; 
+
+    public readonly infrastructure?: InfrastructureModel;
 
     static attributesModel() {
         return {

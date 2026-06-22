@@ -102,22 +102,31 @@ class InfrastructureService{
         let totalIdePhone = 0;
         let totalTacArea = 0; 
 
-        upssConfigs.forEach((config: any) => {
-            const area = parseFloat(config.infrastructure.area_m2);
+        upssConfigs.forEach((config: UpssAnnualConfigModel) => {
+            if(!config.infrastructure)return;
+
+            const area = parseFloat(config.infrastructure.get('area_m2') as string);
+            const energyW = parseFloat(config.get('energy_weight') as string);
+            const waterW = parseFloat(config.get('water_weight') as string);
+            const phoneW = parseFloat(config.get('phone_weight') as string);
             
-            totalIdeEnergy += calculateInductor(parseFloat(config.energy_weight), area);
-            totalIdeWater += calculateInductor(parseFloat(config.water_weight), area);
-            totalIdePhone += calculateInductor(parseFloat(config.phone_weight), area);
-            
+            totalIdeEnergy += calculateInductor(energyW, area);
+            totalIdeWater += calculateInductor(waterW, area);
+            totalIdePhone += calculateInductor(phoneW, area);
             totalTacArea += area;
         });
 
-        for (const config of upssConfigs as any) {
-            const area = parseFloat(config.infrastructure.area_m2);
+        for (const config of upssConfigs ) {
+             if (!config.infrastructure) continue;
 
-            const ideEnergy = calculateInductor(parseFloat(config.energy_weight), area);
-            const ideWater = calculateInductor(parseFloat(config.water_weight), area);
-            const idePhone = calculateInductor(parseFloat(config.phone_weight), area);
+            const area = parseFloat(config.infrastructure.get('area_m2') as string);
+            const energyW = parseFloat(config.get('energy_weight') as string);
+            const waterW = parseFloat(config.get('water_weight') as string);
+            const phoneW = parseFloat(config.get('phone_weight') as string);
+
+            const ideEnergy = calculateInductor(energyW, area);
+            const ideWater = calculateInductor(waterW, area);
+            const idePhone = calculateInductor(phoneW, area);
 
             const aceEnergy = calculatePorrateo(ideEnergy, totalIdeEnergy, parseFloat(globalCosts.get('energy_annual_cost') as string));
             const acaWater = calculatePorrateo(ideWater, totalIdeWater, parseFloat(globalCosts.get('water_annual_cost') as string));
@@ -127,7 +136,7 @@ class InfrastructureService{
             const cpsGeneral = calculatePorrateoGeneral(parseFloat(globalCosts.get('general_services_annual_cost') as string), totalTacArea, area);
 
             const totalBasicServices = aceEnergy + acaWater + actPhone;
-            const projectedPatients = config.projected_annual_procedures;
+            const projectedPatients = config.get('projected_annual_procedures') as number;
 
             await config.update({
                 unit_basic_services_cost: calculateUniCostPorrateo(totalBasicServices, projectedPatients),
