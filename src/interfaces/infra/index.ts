@@ -18,3 +18,22 @@ export const CreateInfrastructureSchema = InfrastructureSchema.pick({
 });
 
 export type CreateInfrastructureInput = z.infer<typeof CreateInfrastructureSchema>;
+
+export const CreateUpssAnnualConfigSchema = z.object({
+    infrastructureId: z.number({ message: "El ID de la infraestructura (UPSS) es obligatorio" }),
+    fiscalYearId: z.number({ message: "El ID del año fiscal es obligatorio" }),
+    projectedAnnualProcedures: z.number().int().min(1, "La producción proyectada debe ser mayor a 0"),
+    
+    //valoresq depues debo validar
+    energyWeight: z.union([z.literal(2), z.literal(1.5), z.literal(1)], {
+        message: "El peso de energía debe ser 2 (Alto), 1.5 (Medio) o 1 (Bajo)"
+    }),
+    waterWeight: z.union([z.literal(2), z.literal(1.5), z.literal(1)], {
+        message: "El peso de agua debe ser 2 (Alto), 1.5 (Medio) o 1 (Bajo)"
+    }),
+    phoneWeight: z.union([z.literal(2), z.literal(1.5), z.literal(1)], {
+        message: "El peso de teléfono debe ser 2 (Alto), 1.5 (Medio) o 1 (Bajo)"
+    })
+});
+
+export type CreateUpssAnnualConfigInput = z.infer<typeof CreateUpssAnnualConfigSchema>;

@@ -28,7 +28,6 @@ class IpressGlobalCostController {
     static async create(req: Request, res: Response){
 
         try {
-
             const newGlobalCost = await IpressGlobalCostService.createGlobalCost(req.body);
             res.status(201).json(newGlobalCost);
 
