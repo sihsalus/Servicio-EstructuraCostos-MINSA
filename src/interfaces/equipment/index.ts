@@ -24,3 +24,10 @@ export const CreateEquipmentSchema = EquipmentSchema.pick({
 });
 
 export type CreateEquipmentInput = z.infer<typeof CreateEquipmentSchema>;
+
+export const EquipmentCostSchema = z.object({
+    equipment_id: z.number(),
+    price_history_id: z.number(),
+    usage_time_minutes: z.number().min(1),
+    partial_cost: z.number().min(0)
+});

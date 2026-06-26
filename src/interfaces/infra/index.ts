@@ -36,4 +36,10 @@ export const CreateUpssAnnualConfigSchema = z.object({
     })
 });
 
+export const InfrastructureCostSchema = z.object({
+    infrastructure_id: z.number(),
+    price_history_id: z.number(),
+    partial_cost: z.number().min(0) 
+});
+
 export type CreateUpssAnnualConfigInput = z.infer<typeof CreateUpssAnnualConfigSchema>;

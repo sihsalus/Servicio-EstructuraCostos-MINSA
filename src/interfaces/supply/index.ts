@@ -20,3 +20,10 @@ export const CreateSupplySchema = SupplySchema.pick({
 });
 
 export type CreateSupplyInput = z.infer<typeof CreateSupplySchema>;
+
+export const SupplyCostSchema = z.object({
+    supply_id: z.number(),
+    supply_info_history_id: z.number(),
+    quantity: z.number().min(1),
+    partial_cost: z.number().min(0)
+});

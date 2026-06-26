@@ -10,6 +10,8 @@ import EquipmentCostModel from "@/models/equipment/EquipmentCostModel";
 import EquipmentModel from "@/models/equipment/EquipmentModel";
 import CustomError from "@/utils/CustomError";
 import { CreateCostStructureInput, CreateCostStructureSchema } from "@/interfaces/CostStructure";
+import sequelize from "@/config/db";
+import InfrastructureCostModel from "@/models/infrastructure/InfrastructureCostModel";
 
 class CostStructureService {
 
@@ -60,22 +62,59 @@ class CostStructureService {
             throw new CustomError("Formato de estructura de costos inválido", 400);
         }
 
-        const { medicalProcedureId, fiscalYearId, totalTimeMinutes, totalStandarCost } = parsed.data;
+        const { 
+            medicalProcedureId, 
+            fiscalYearId, 
+            totalTimeMinutes, 
+            totalStandarCost, 
+            activitiesCost,
+            infrastructureCost 
+        } = parsed.data
 
-        const existing = await CostStructureModel.findOne({
-            where: { medical_procedure_id: medicalProcedureId, fiscal_year_id: fiscalYearId }
-        });
+        const t = await sequelize.transaction();
 
-        if (existing) {
-            throw new CustomError("Ya existe una estructura de costos base para este procedimiento en el año seleccionado", 409);
+        try{
+            const newStructure = await CostStructureModel.create({
+                medical_procedure_id: medicalProcedureId,
+                fiscal_year_id: fiscalYearId,
+                total_time_minutes: totalTimeMinutes,
+                total_standar_cost: totalStandarCost,
+
+                infrastructureCost: infrastructureCost.map(inf => ({
+                    infrastructure_id: inf.infrastructure_id,
+                    price_history_id: inf.price_history_id,
+                    partial_cost: inf.partial_cost
+                })),
+
+                activitiesCost: activitiesCost.map(act => ({
+                    activity_id: act.activity_id,
+                    time_minutes: act.time_minutes,
+                    total_activity_cost: act.total_activity_cost,
+                    rrhhCosts: act.rrhhCosts,
+                    supplyCosts: act.supplyCosts,
+                    equipmentCosts: act.equipmentCosts
+                }))
+            },{
+                include:[
+                    {model: InfrastructureCostModel, as:'infrastructureCost'},
+                    {
+                        model: ActivityCostExecutionModel,
+                        as:'activitiesCost',
+                        include:[
+                            {model: RrhhCostModel, as:'rrhhCost'},
+                            {model: SupplyCostModel, as:'supplyCosts'},
+                            {model: EquipmentCostModel, as:'equipmentCosts'}
+                        ]
+                    }
+                ],
+                transaction:t
+            });
+
+            await t.commit();
+            return newStructure;
+        }catch(error){
+            await t.rollback();
         }
-
-        return await CostStructureModel.create({
-            medical_procedure_id: medicalProcedureId,
-            fiscal_year_id: fiscalYearId,
-            total_time_minutes: totalTimeMinutes,
-            total_standar_cost: totalStandarCost
-        });
     }
 }
 
